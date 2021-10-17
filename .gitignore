@@ -34,4 +34,5 @@ build/
 
 ### Secrets ###
 src/main/resources/application-dev.yml
-*application**.yml
+*application-dev.yml
+*application-prod.yml

@@ -1,21 +1,23 @@
 # Kali Emailing Service
-Is a mailing service used, to send emails through http requests.
+Kali Emailing Service Is a mailing service used, to send emails through http requests.
 
 ## Configuration
 
-Inside `src/resources/application-dev.yml` add the following:
+Create `src/resources/application-prod.yml`, then add the following:
 ```yaml
 spring:
   mail:
-    host: smtp.gmail.com
-    port: 587
     username: #your email
     password: #app password
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
 ```
+
+### Note [.properties]
+> You can use .properties as such `src/resources/application-prod.properties`
+> but it's not recommended to use yaml and properties in the same project, so 
+> you need to  change the `application.yaml` to `application.properties` and 
+> format appropriately.
+
+
+
+
 
