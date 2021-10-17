@@ -21,17 +21,13 @@ public class MailingService {
     public void sendSimpleEmail(Email email){
         SimpleMailMessage message =(SimpleMailMessage) context.getBean("argsMailMessage",email);
         mailSender.send(message);
-        System.out.println("Mail send...");
     }
     public void sendQuickEmail(Email email){
-        SimpleMailMessage message =(SimpleMailMessage) context.getBean("argsMailMessage",email);
+        SimpleMailMessage message =(SimpleMailMessage) context.getBean("quickMailMessage",email);
         mailSender.send(message);
-        System.out.println("Mail send...");
     }
     public void sendHTMLEmail(Email email)throws IOException, MessagingException {
-
         MimeMessage message =(MimeMessage) context.getBean("htmlEmailMessage",email);
         mailSender.send(message);
-        System.out.println("Mail send...");
     }
 }

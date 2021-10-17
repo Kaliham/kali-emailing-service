@@ -14,15 +14,17 @@ import java.util.List;
 @Scope("prototype")
 public class Email {
 
-    private String toEmail;
-    private String body;
-    private String subject;
     @Value("${spring.mail.username}")
     @Setter(AccessLevel.NONE)
     private String fromEmail;
     @Value("${email.cc}")
     @Setter(AccessLevel.NONE)
     private String[] ccEmail;
+
+    private String toEmail;
+    private String body;
+    private String subject;
+
 
     public Email(String toEmail, String body, String subject) {
         this.toEmail = toEmail;

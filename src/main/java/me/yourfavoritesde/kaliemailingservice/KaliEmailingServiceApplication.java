@@ -15,25 +15,7 @@ import javax.mail.internet.MimeMessage;
 
 @SpringBootApplication
 public class KaliEmailingServiceApplication {
-	@Autowired
-	JavaMailSender mailSender;
-	@Autowired
-	ApplicationContext context;
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(KaliEmailingServiceApplication.class, args);
 	}
-
-	@EventListener(ApplicationReadyEvent.class)
-	public void doSomethingAfterStartup() {
-		System.out.println("hello world, I have just started up");
-		Email email = context.getBean(Email.class);
-		email.setToEmail("jotaroham@gmail.com");
-		email.setSubject("pog");
-
-//		MimeMessage mi =(MimeMessage) context.getBean("htmlEmailMessage",email);
-//		mailSender.send(mi);
-	}
-
 }

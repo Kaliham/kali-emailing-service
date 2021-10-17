@@ -17,7 +17,16 @@ spring:
   mail:
     username: #your email
     password: #app password
+email:
+  cc: YOUR_EMAIL(or emails comma-seperated)
+  file: PATH_TO_EMAIL_TEMPLATE
+
+quick:
+  subject: YOUR_SUBJECT
+  body: YOUR_MESSAGE
 ```
+> your email template needs to **MESSAGE** where the `body` attribute of `Email` class will go.
+
 
 After Finishing the configuration, configure the REST controller CORS to accept your domain/ip.
 ```java

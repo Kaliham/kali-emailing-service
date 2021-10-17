@@ -23,14 +23,21 @@ import java.util.stream.Collectors;
 
 @Configuration
 public class MailingServicesConfig {
-    @Autowired
-    ApplicationContext applicationContext;
+
     @Value("${email.file}")
     private String MAIL_FILE;
+    @Value("${quick.subject}")
+    private String quickSubject;
+    @Value("${quick.body}")
+    private String quickBody;
+
+    @Autowired
+    ApplicationContext applicationContext;
+
+
     @Bean
     @Scope("prototype")
     public SimpleMailMessage simpleMailMessage(){
-        System.out.println("pog");
         return new SimpleMailMessage();
     }
 
@@ -38,13 +45,23 @@ public class MailingServicesConfig {
     @Scope("prototype")
     public SimpleMailMessage argsMailMessage(Email email){
         SimpleMailMessage message= new SimpleMailMessage();
-        System.out.println("email:");
-        System.out.println(email);
         message.setFrom(email.getFromEmail());
         message.setTo(email.getToEmail());
         message.setCc(email.getCcEmail());
         message.setSubject(email.getSubject());
         message.setText(email.getBody());
+        return message;
+    }
+
+    @Bean("quickMailMessage")
+    @Scope("prototype")
+    public SimpleMailMessage quickMailMessage(Email email){
+        SimpleMailMessage message= new SimpleMailMessage();
+        message.setFrom(email.getFromEmail());
+        message.setTo(email.getToEmail());
+        message.setCc(email.getCcEmail());
+        message.setSubject(quickSubject);
+        message.setText(quickBody);
         return message;
     }
 
